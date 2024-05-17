@@ -6,12 +6,10 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/hde-oliv/ayumu/discord"
-	"github.com/hde-oliv/ayumu/utils"
 )
 
 func main() {
-	err := godotenv.Load()
-	utils.Check(err)
+	godotenv.Load() // Dev
 
 	discord.BotToken = os.Getenv("DISCORD_TOKEN")
 	discord.RunBot()

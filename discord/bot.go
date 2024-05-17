@@ -2,6 +2,7 @@ package discord
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"os/signal"
 
@@ -22,7 +23,9 @@ func RunBot() {
 		}
 	})
 
-	s.Open()
+	if err := s.Open(); err != nil {
+		log.Fatal(err)
+	}
 
 	for _, v := range commands {
 		_, err := s.ApplicationCommandCreate(s.State.User.ID, "", v)
