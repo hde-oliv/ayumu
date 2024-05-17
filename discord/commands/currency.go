@@ -1,11 +1,13 @@
-package discord
+package commands
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"os"
 
+	"github.com/bwmarrin/discordgo"
 	"github.com/hde-oliv/ayumu/utils"
 )
 
@@ -17,7 +19,14 @@ type LatestResponse struct {
 	Rates    map[string]float64 `json:"rates"`
 }
 
-func GetDollarRate() float64 {
+func Dollar(s *discordgo.Session, i *discordgo.InteractionCreate) {
+	rate := getDollarRate()
+	text := fmt.Sprintf("%.2f", rate)
+
+	s.InteractionRespond(i.Interaction, textResponse(text))
+}
+
+func getDollarRate() float64 {
 	base_addr := "https://api.currencybeacon.com/v1/latest"
 	api_key := "?api_key=" + os.Getenv("CURRENCY_TOKEN")
 

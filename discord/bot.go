@@ -27,9 +27,13 @@ func RunBot() {
 		log.Fatal(err)
 	}
 
-	for _, v := range commands {
-		_, err := s.ApplicationCommandCreate(s.State.User.ID, "", v)
-		utils.Check(err)
+	for _, c := range description {
+		for _, g := range s.State.Guilds {
+			_, err := s.ApplicationCommandCreate(s.State.User.ID, g.ID, c)
+			fmt.Println(c.Name)
+
+			utils.Check(err)
+		}
 	}
 
 	defer s.Close()
