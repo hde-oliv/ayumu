@@ -47,6 +47,10 @@ var description = []*discordgo.ApplicationCommand{
 		Description: "Sakaki and Maya, 3D version",
 	},
 	{
+		Name:        "chiyo-death",
+		Description: "RIP Chiyo-chan.",
+	},
+	{
 		Name:        "dollar",
 		Description: "Dollar conversion rate to Brazillian Real.",
 	},
@@ -63,5 +67,6 @@ var handlers = map[string]func(s *discordgo.Session, i *discordgo.InteractionCre
 	"tsukurimashou-3d": commands.Tsukurimashou3d,
 	"static":           commands.Static,
 	"maya-3d":          commands.Maya3d,
+	"chiyo-death":      commands.ChiyoDeath,
 	"dollar":           commands.Dollar,
 }

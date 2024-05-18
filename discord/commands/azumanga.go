@@ -63,3 +63,9 @@ func America(s *discordgo.Session, i *discordgo.InteractionCreate) {
 
 	s.InteractionRespond(i.Interaction, textResponse(text))
 }
+
+func ChiyoDeath(s *discordgo.Session, i *discordgo.InteractionCreate) {
+	text := "https://youtu.be/ThmZAcbjhts"
+
+	s.InteractionRespond(i.Interaction, textResponse(text))
+}
