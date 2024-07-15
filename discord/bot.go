@@ -17,6 +17,8 @@ func RunBot() {
 	s, err := discordgo.New("Bot " + BotToken)
 	utils.Check(err)
 
+	defer s.Close()
+
 	s.AddHandler(func(s *discordgo.Session, i *discordgo.InteractionCreate) {
 		if h, ok := handlers[i.ApplicationCommandData().Name]; ok {
 			h(s, i)
@@ -35,8 +37,6 @@ func RunBot() {
 			utils.Check(err)
 		}
 	}
-
-	defer s.Close()
 
 	fmt.Println("Running....")
 
