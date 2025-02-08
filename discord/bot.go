@@ -32,7 +32,7 @@ func RunBot() {
 	for _, c := range description {
 		for _, g := range s.State.Guilds {
 			_, err := s.ApplicationCommandCreate(s.State.User.ID, g.ID, c)
-			fmt.Println(c.Name)
+			fmt.Printf("Added command %s to %s\n", c.Name, g.Name)
 
 			utils.Check(err)
 		}
