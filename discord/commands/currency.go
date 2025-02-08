@@ -21,7 +21,7 @@ type LatestResponse struct {
 
 func Dollar(s *discordgo.Session, i *discordgo.InteractionCreate) {
 	rate := getDollarRate()
-	text := fmt.Sprintf("%.2f", rate)
+	text := fmt.Sprintf("ドルは%.2fです！", rate)
 
 	s.InteractionRespond(i.Interaction, textResponse(text))
 }
